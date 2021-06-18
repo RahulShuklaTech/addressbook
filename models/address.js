@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const addressSchema = new mongoose.Schema({
     user: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "user"
@@ -32,6 +32,6 @@ const userSchema = new mongoose.Schema({
 }, {timestamps: true})
 
 
-const addressModel = new mongoose.model('address',adressSchema);
+const addressModel = new mongoose.model('address',addressSchema);
 
 module.exports = addressModel;

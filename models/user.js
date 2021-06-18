@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
     },
     addresses: {
         type: [mongoose.SchemaTypes.ObjectId],
-        ref: "address"
+        ref: "addresses"
 
     }
    
