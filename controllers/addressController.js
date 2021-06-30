@@ -21,7 +21,7 @@ const getAddress =  async  (id) => {
     try{
         console.log(id)
         let data = await Address.find({user:id});
-        console.log(data)
+        // console.log(data)
         return data
 
     }catch(e){
@@ -42,8 +42,55 @@ const deleteAddress = async (id) => {
     }
 }
 
-const updateAddress = async (update) => {
+const updateAddress = async (id,update) => {
+
+    try {
+        let data = await Address.updateOne(
+        {_id: id},{ $set: update });
+        return data;
+
+    }catch(e){
+        return false
+    }
     
 }
 
-module.exports = {addAddress,getAddress,deleteAddress}
+
+
+const getAddressByCity =  async  (id,city) => {
+    try{
+
+        //let addresses = await getAddress(id);
+        // console.log("sfdjdfs",addresses,city)
+        // let found = addresses.filter(item => item.city === city)
+        // return found
+        // console.log(id)
+        let data = await Address.find({user:id, city});
+        console.log(data)
+        return data
+
+    }catch(e){
+        console.log(e.message)
+    }
+}
+
+
+
+const getAddressByState =  async  (id,state) => {
+    try{
+
+        //let addresses = await getAddress(id);
+        // console.log("sfdjdfs",addresses,city)
+        // let found = addresses.filter(item => item.city === city)
+        // return found
+        // console.log(id)
+        let data = await Address.find({user:id, state});
+        console.log(data)
+        return data
+
+    }catch(e){
+        console.log(e.message)
+    }
+}
+
+module.exports = {addAddress,getAddress,deleteAddress,updateAddress,getAddressByCity,getAddressByState}

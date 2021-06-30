@@ -27,7 +27,7 @@ const addUser = async ({name,email,password}) => {
         return {status: true, result : {message: savedUser}};
     }catch(e){
         console.log(e.message);
-        
+        return {status: false, result : {message: e.message}};   
     }return {status: false, result : {message: e.message}};
 }
 
@@ -42,7 +42,7 @@ const loginUser = async ({email,password}) => {
         if(!result){
             return{status: false, result: {message: "invalid password"}}
         }
-        return {status: true, result: {message: user }}
+        return {status: true, result:  user }
     }catch(e){
 
         return {status: false, result: {message: e.message }}
@@ -56,9 +56,9 @@ const findUser = async (email) => {
         if(user == null){
             return {status: false, result: {message: "invalid email"}}
         }
-        return user.id
+        return {status: true, result: {message: user}}
     }catch(e){
-        return false
+        return {status: false, result: {message: e.message}};
     }
 }
 
